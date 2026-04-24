@@ -1,4 +1,5 @@
-import  controller.ReceitaController;
+package com.cpfindex;
+import controller.ReceitaController;
 
 
 public class Main {
