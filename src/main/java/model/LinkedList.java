@@ -1,9 +1,9 @@
 package model;
 
 public class LinkedList {
-    NoLkdList head;
-    int amount;
-    int searchCount;
+    private NodeLkdList head;
+    private int amount;
+    private int searchCount;
 
     public LinkedList() {
         this.head = null;
@@ -12,13 +12,13 @@ public class LinkedList {
     }
 
 
-    public Contribuinte search(String cpf, NoLkdList actualNode){
+    public Contribuinte search(String cpf){
         searchCount= 0;
-        return searchInTail(cpf,actualNode);
+        return searchInTail(cpf, head);
 
     }
 
-    public Contribuinte searchInTail(String cpf, NoLkdList actualNode){
+    private Contribuinte searchInTail(String cpf, NodeLkdList actualNode){
         searchCount++;
         if (actualNode != null) {
 
@@ -28,6 +28,8 @@ public class LinkedList {
             if (comparison != 0) {
                 return searchInTail(cpf, actualNode.getNext());
             }
+
+            return actualNodeContribuinte;
         }
 
         return null;
@@ -39,10 +41,10 @@ public class LinkedList {
         amount++;
 
     }
-    private NoLkdList insertTail(NoLkdList actualNode, Contribuinte contribuinte){
+    private NodeLkdList insertTail(NodeLkdList actualNode, Contribuinte contribuinte){
         if(actualNode == null){
 
-            return new NoLkdList(contribuinte, null);
+            return new NodeLkdList(contribuinte, null);
         }
 
         actualNode.setNext(insertTail(actualNode.getNext(), contribuinte));
@@ -51,60 +53,46 @@ public class LinkedList {
 
     }
 
+
     public boolean delete(String cpf){
 
-        NoLkdList target = head;
-        NoLkdList next = target.getNext();
+        NodeLkdList target = head;
+        NodeLkdList prev = null;
 
 
+        while ( target != null && !cpf.equals( target.contribuinte.getCpf() )){
 
-        while ( target != null && cpf != target.contribuinte.getCpf()){
-            target = next;
-            next = target.getNext();
+            prev = target;
+            target = prev.next;
 
         }
-        target.setContribuinte(next.getContribuinte());
-        target.setNext(next.getNext());
 
+        if ( target == null) return false;
+
+        if (prev != null){
+
+            prev.next = target.next;
+
+        }else {
+
+            this.head = target.next;
+        }
+        amount--;
         return true;
 
-
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    public NoLkdList getHead() {
-        return head;
-    }
-
-    public void setHead(NoLkdList head) {
-        this.head = head;
-    }
 
     public int getAmount() {
         return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 
     public int getSearchCount() {
         return searchCount;
     }
 
-    public void setSearchCount(int searchCount) {
-        this.searchCount = searchCount;
-    }
+
 
 
 }

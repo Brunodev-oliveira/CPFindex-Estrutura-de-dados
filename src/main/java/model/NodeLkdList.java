@@ -1,11 +1,11 @@
 package model;
 
-public class NoLkdList {
+public class NodeLkdList {
     Contribuinte contribuinte;
-    NoLkdList next;
+    NodeLkdList next;
 
 
-    public NoLkdList( Contribuinte contribuinte, NoLkdList next) {
+    public NodeLkdList( Contribuinte contribuinte, NodeLkdList next) {
         this.contribuinte = contribuinte;
         this.next = next;
     }
@@ -20,11 +20,11 @@ public class NoLkdList {
         this.contribuinte = contribuinte;
     }
 
-    public NoLkdList getNext() {
+    public NodeLkdList getNext() {
         return next;
     }
 
-    public void setNext(NoLkdList next) {
+    public void setNext(NodeLkdList next) {
         this.next = next;
     }
 }
