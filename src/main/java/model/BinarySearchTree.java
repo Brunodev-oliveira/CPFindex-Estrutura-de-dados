@@ -2,7 +2,7 @@ package model;
 
 
 public class BinarySearchTree {
-    private NoBst root ;
+    private NodeBst root ;
     private int searchCount;
     private int amount;
 
@@ -21,9 +21,9 @@ public class BinarySearchTree {
         amount++;
     }
 
-    private NoBst insertTail(NoBst actual, String cpf, Contribuinte contribuinte){
+    private NodeBst insertTail(NodeBst actual, String cpf, Contribuinte contribuinte){
         if (actual == null){
-            return new NoBst(cpf, contribuinte );
+            return new NodeBst(cpf, contribuinte );
         }
 
         int comparison = cpf.compareTo(actual.getKey());
@@ -51,7 +51,7 @@ public class BinarySearchTree {
 
     }
 
-    private Contribuinte searchInTail(NoBst actual, String cpf) {
+    private Contribuinte searchInTail(NodeBst actual, String cpf) {
         searchCount++;
         if (actual == null){
             return null;
@@ -84,7 +84,7 @@ public class BinarySearchTree {
     }
 
 
-    private NoBst deleteTail(NoBst actual, String cpf){
+    private NodeBst deleteTail(NodeBst actual, String cpf){
         if(actual == null){
             return null;
         }
@@ -104,7 +104,7 @@ public class BinarySearchTree {
             if(actual.getRight() == null) return  actual.getLeft();
 
 
-            NoBst successor = searchMinor(actual.getRight());
+            NodeBst successor = searchMinor(actual.getRight());
 
             actual.setKey(successor.getKey());
             actual.setContribuinte(successor.getContribuinte());
@@ -118,7 +118,7 @@ public class BinarySearchTree {
     }
 
 
-    private NoBst searchMinor(NoBst actualNode){
+    private NodeBst searchMinor(NodeBst actualNode){
         while (actualNode.getLeft() != null){
             actualNode = actualNode.getLeft();
         }

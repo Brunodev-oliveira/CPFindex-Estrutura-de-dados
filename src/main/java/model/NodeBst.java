@@ -1,15 +1,14 @@
 package model;
-import model.Contribuinte;
 import java.lang.String;
 
 
-public class NoBst {
+public class NodeBst {
     private String key;
     private Contribuinte contribuinte;
-    private NoBst right;
-    private NoBst left;
+    private NodeBst right;
+    private NodeBst left;
 
-    public NoBst(String key, Contribuinte contribuinte){
+    public NodeBst(String key, Contribuinte contribuinte){
 
         this.key = key;
         this.contribuinte = contribuinte;
@@ -33,19 +32,19 @@ public class NoBst {
         this.contribuinte = contribuinte;
     }
 
-    public NoBst getLeft() {
+    public NodeBst getLeft() {
         return left;
     }
 
-    public void setLeft(NoBst left) {
+    public void setLeft(NodeBst left) {
         this.left = left;
     }
 
-    public NoBst getRight() {
+    public NodeBst getRight() {
         return right;
     }
 
-    public void setRight(NoBst right) {
+    public void setRight(NodeBst right) {
         this.right = right;
     }
 }

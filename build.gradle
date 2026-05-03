@@ -1,21 +1,30 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group = 'com.seuprojeto'
+group = 'com.cpfindex'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+javafx {
+    version = "21"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
 dependencies {
-    // Usa a versão que você baixou manualmente
     implementation 'org.json:json:20240303'
 }
 
 application {
-    // Ajuste para o pacote e classe principal do seu projeto
     mainClass = 'com.cpfindex.Main'
 }
