@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.DemoController">
+
+<center>
+    <ScrollPane fx:id="scrollPane"
+                fitToWidth="false"
+                fitToHeight="false"
+                pannable="true"
+                hbarPolicy="AS_NEEDED"
+                vbarPolicy="AS_NEEDED">
+        <content>
+            <Pane fx:id="treeContainer"/>
+        </content>
+    </ScrollPane>
+</center>
+
+<right>
+    <VBox spacing="12" prefWidth="200">
+        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+        <Label text="Gerenciar CPF" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+        <TextField fx:id="tfCpf" promptText="Digite o CPF..."/>
+        <Button text="Inserir"  onAction="#onInsert"  maxWidth="Infinity" styleClass="btn-insert"/>
+        <Button text="Buscar"   onAction="#onSearch"   maxWidth="Infinity" styleClass="btn-search"/>
+        <Button text="Remover"  onAction="#onRemove"  maxWidth="Infinity" styleClass="btn-remove"/>
+        <Label fx:id="lblStatus" text="" wrapText="true"
+               style="-fx-font-size: 11; -fx-text-fill: #555;"/>
+    </VBox>
+</right>
+
+</BorderPane>

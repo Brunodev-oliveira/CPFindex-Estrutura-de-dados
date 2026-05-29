@@ -1,57 +1,56 @@
 package model;
 
-public class LinkedList {
+public class LinkedList implements CpfRepository {
     private NodeLkdList head;
+    private NodeLkdList tail;
     private int amount;
     private int searchCount;
 
+
     public LinkedList() {
         this.head = null;
+        this.tail = null;
         this.amount = 0;
         this.searchCount = 0;
+
+
     }
 
 
     public Contribuinte search(String cpf){
         searchCount= 0;
-        return searchInTail(cpf, head);
+        NodeLkdList actual = this.head;
+        while (actual != null){
+            searchCount++;
+            if (cpf.equals(actual.contribuinte.getCpf())) return actual.contribuinte;
 
-    }
+            actual = actual.next;
 
-    private Contribuinte searchInTail(String cpf, NodeLkdList actualNode){
-        searchCount++;
-        if (actualNode != null) {
 
-            Contribuinte actualNodeContribuinte = actualNode.contribuinte;
-            int comparison = cpf.compareTo(actualNodeContribuinte.getCpf());
-
-            if (comparison != 0) {
-                return searchInTail(cpf, actualNode.getNext());
-            }
-
-            return actualNodeContribuinte;
         }
 
         return null;
 
     }
-    public void insert(Contribuinte contribuinte){
 
-        head = insertTail(head, contribuinte);
-        amount++;
 
-    }
-    private NodeLkdList insertTail(NodeLkdList actualNode, Contribuinte contribuinte){
-        if(actualNode == null){
+    public boolean insert(Contribuinte contribuinte){
 
-            return new NodeLkdList(contribuinte, null);
+        //if(search(contribuinte.getCpf()) != null) return false;
+        NodeLkdList newNode = new NodeLkdList(contribuinte, null);
+        if (this.head == null){
+            this.head = newNode;
+            this.tail = newNode;
+        }else{
+            tail.setNext(newNode);
+            tail = newNode;
         }
 
-        actualNode.setNext(insertTail(actualNode.getNext(), contribuinte));
 
-        return actualNode;
-
+        amount++;
+        return true;
     }
+
 
 
     public boolean delete(String cpf){

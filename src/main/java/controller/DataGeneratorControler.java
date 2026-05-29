@@ -21,7 +21,7 @@ public class DataGeneratorControler {
 
     }
 
-    public void populateInitialBase(BinarySearchTree tree, int amount){
+    public void populateInitialBase(CpfRepository structure, int amount){
 
         for (int i = 0; i < amount; i++) {
 
@@ -33,55 +33,11 @@ public class DataGeneratorControler {
                     obj.getString("situacaoCadastral")
                     );
 
-            tree.insert(contribuinte);
+            structure.insert(contribuinte);
 
         }
 
     }
-
-
-
-
-
-
-
-
-
-//    private Random random;
-//    private String[] nomes = {
-//            "Lucas",
-//            "Mariana",
-//            "Rafael",
-//            "Beatriz",
-//            "Gabriel",
-//            "Juliana",
-//            "Felipe",
-//            "Camila",
-//            "Bruno",
-//            "Ana",
-//    };
-//    private String[] situations = {"ativo","suspenso","inativo"};
-//
-//
-//   public DataGeneratorControler(){
-//       random = new Random();
-//
-//   }
-//
-//   public generateInitialBase(BinarySearchTree tree, int amount){
-//       for (int i = 0; i < amount; i++) {
-//
-//
-//       }
-//   }
-//   public Contribuinte generateRandomContribuinte(){
-//
-
-
-
-//   }
-
-
 
 
 

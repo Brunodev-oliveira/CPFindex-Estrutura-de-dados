@@ -1,10 +1,15 @@
 package model;
 
 
-public class BinarySearchTree {
+import java.util.ArrayList;
+import java.util.List;
+
+public class BinarySearchTree implements CpfRepository {
     private NodeBst root ;
     private int searchCount;
     private int amount;
+
+
 
 
     public BinarySearchTree() {
@@ -16,42 +21,63 @@ public class BinarySearchTree {
 
 
     }
-    public void insert(Contribuinte contribuinte){
-        root = insertTail(root, contribuinte.getCpf(), contribuinte);
-        amount++;
+    public boolean insert(Contribuinte contribuinte){
+        int amountBefore = amount;
+        root = insertRecursive(root, contribuinte.getCpf(), contribuinte);
+        return amount > amountBefore;
+
     }
 
-    private NodeBst insertTail(NodeBst actual, String cpf, Contribuinte contribuinte){
+    private NodeBst insertRecursive(NodeBst actual, String cpf, Contribuinte contribuinte){
         if (actual == null){
+            amount++;
             return new NodeBst(cpf, contribuinte );
         }
 
         int comparison = cpf.compareTo(actual.getKey());
 
         if( comparison < 0){
-            actual.setLeft(insertTail(actual.getLeft(),cpf, contribuinte));
+            actual.setLeft(insertRecursive(actual.getLeft(),cpf, contribuinte));
         } else if (comparison > 0) {
-            actual.setRight(insertTail(actual.getRight(), cpf, contribuinte));
+            actual.setRight(insertRecursive(actual.getRight(), cpf, contribuinte));
 
         }
 
         return actual;
         //Aviso: Não insere cpf igual
-        //Falta incrementar alguma mensagem para CPF iguais!
+        //Falta implementar alguma mensagem para CPF iguais!
 
 
     }
+
+    public List<Contribuinte> inOrder(){
+        List<Contribuinte> lista = new ArrayList<>();
+        inOrderTail(root, lista);
+        return lista;
+
+    }
+
+    private void inOrderTail(NodeBst node, List<Contribuinte> lista){
+        if (node == null) return;
+
+        inOrderTail(node.getLeft(), lista);
+        lista.add(node.getContribuinte());
+        inOrderTail(node.getRight(), lista);
+
+    }
+
+
 
     //Busca
 
 
     public Contribuinte search(String cpf) {
         searchCount = 0;
-        return searchInTail(root, cpf);
+        return searchRecursive(root, cpf);
 
     }
 
-    private Contribuinte searchInTail(NodeBst actual, String cpf) {
+    private Contribuinte searchRecursive(NodeBst actual, String cpf) {
         searchCount++;
         if (actual == null){
             return null;
@@ -61,9 +87,9 @@ public class BinarySearchTree {
         if ( comparison == 0){
             return actual.getContribuinte();
         }else if (comparison < 0){
-            return searchInTail(actual.getLeft(), cpf);
+            return searchRecursive(actual.getLeft(), cpf);
         }else {
-            return searchInTail(actual.getRight(), cpf);
+            return searchRecursive(actual.getRight(), cpf);
 
         }
 
@@ -77,14 +103,14 @@ public class BinarySearchTree {
     public boolean delete(String cpf){
 
         int amountBefore = amount;
-        root = deleteTail(root, cpf);
+        root = deleteRecursive(root, cpf);
 
         return amountBefore > amount;
 
     }
 
 
-    private NodeBst deleteTail(NodeBst actual, String cpf){
+    private NodeBst deleteRecursive(NodeBst actual, String cpf){
         if(actual == null){
             return null;
         }
@@ -92,10 +118,10 @@ public class BinarySearchTree {
         int comparison = cpf.compareTo(actual.getKey());
 
         if (comparison < 0){
-            actual.setLeft(deleteTail(actual.getLeft(), cpf));
+            actual.setLeft(deleteRecursive(actual.getLeft(), cpf));
 
         } else if (comparison > 0) {
-            actual.setRight(deleteTail(actual.getRight(), cpf));
+            actual.setRight(deleteRecursive(actual.getRight(), cpf));
 
         }else{
             amount--;
@@ -108,11 +134,35 @@ public class BinarySearchTree {
 
             actual.setKey(successor.getKey());
             actual.setContribuinte(successor.getContribuinte());
-            actual.setRight(deleteTail(actual.getRight(),successor.getKey()));
+            actual.setRight(deleteSuccessor(actual.getRight(),successor.getKey()));
 
         }
 
         return  actual;
+
+
+    }
+    private NodeBst deleteSuccessor(NodeBst actual, String cpf){
+
+        if (actual == null) return null;
+
+        int comparison = cpf.compareTo(actual.getKey());
+
+        if (comparison < 0){
+            actual.setLeft(deleteSuccessor(actual.getLeft(), cpf));
+
+        } else if (comparison > 0) {
+            actual.setRight(deleteSuccessor(actual.getRight(), cpf));
+
+        }else{
+
+            return actual.getRight();
+
+
+        }
+
+        return actual;
+
 
 
     }
@@ -126,6 +176,53 @@ public class BinarySearchTree {
         return actualNode;
     }
 
+    public int bstHeight(){
+        NodeBst node = root;
+
+        return bstHeightRecursive(node);
+
+    }
+
+    private int bstHeightRecursive(NodeBst node){
+
+        if(node == null) return -1;
+
+        return 1 + Math.max(
+                bstHeightRecursive(node.getLeft()),
+                bstHeightRecursive(node.getRight())
+        );
+    }
+
+    public int balanceFactor() {
+        return bstHeightRecursive(root.getLeft()) - bstHeightRecursive(root.getRight());
+    }
+
+    public NodeBst getRoot() {
+        return root;
+    }
+
+
+    public List<NodeBst> searchPath(String cpf) {
+        searchCount = 0;
+        List<NodeBst> path = new ArrayList<>();
+        searchPathRecursive(root, cpf, path);
+        return path;
+    }
+
+    private void searchPathRecursive(NodeBst actual, String cpf, List<NodeBst> path) {
+        if (actual == null) return;
+        searchCount++;
+        path.add(actual);
+        int comparison = cpf.compareTo(actual.getKey());
+        if (comparison < 0) {
+            searchPathRecursive(actual.getLeft(), cpf, path);
+        } else if (comparison > 0) {
+            searchPathRecursive(actual.getRight(), cpf, path);
+        }
+        // comparison == 0 → encontrou, para aqui
+    }
+
+
     public int getSearchCount() {
         return searchCount;
     }
@@ -134,9 +231,9 @@ public class BinarySearchTree {
         return amount;
     }
 
-    public void resetSearchCount(){
+    private void resetSearchCount(){
 
         searchCount = 0;
 
     }
-}//final da árvore
+}

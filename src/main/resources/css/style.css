@@ -1,0 +1,216 @@
+/* texto das abas */
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #1a3a6b;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+/* aba selecionada — linha embaixo */
+.tab-pane .tab:selected {
+    -fx-border-color: transparent transparent #1351b4 transparent;
+    -fx-border-width: 0 0 3 0;
+}
+
+/* texto da aba selecionada */
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #1351b4;
+}
+
+
+
+
+
+
+.card-operations{
+
+
+    -fx-border-color: #d8dce2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+
+
+}
+
+/*
+--------------------Generics and reusable class ----------------------------------------------------
+*/
+
+.rounded{
+
+    -fx-border-color: #d8dce2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+
+
+
+}
+
+/* ------------------------Overwrite---------------------------------------------------------------- */
+
+
+.table-view.rounded {
+    -fx-border-color: #d8dce2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+.table-view {
+    -fx-background-color: #fff;
+}
+
+/*.table-view .table-cell {
+    -fx-background-color: #fff;
+}*/
+/*.table-view .table-row-cell {
+    -fx-background-color: white;
+}*/
+
+/*.table-view .table-row-cell:odd {
+    -fx-background-color: white;
+}*/
+/*.table-view .column-header-background {
+    -fx-background-color: #F3F4F6;
+}*/
+.table-view .column-header {
+    -fx-background-color: #f3f4f6;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #6B7280;
+}
+
+
+
+
+
+
+/* ======================== BST Visual (DemoView) ======================== */
+
+/* Arestas da árvore */
+.tree-edge {
+    -fx-stroke: #8fa8c8;
+    -fx-stroke-width: 1.5px;
+    -fx-stroke-line-cap: round;
+}
+
+/* Retângulo do nó — estado padrão */
+.node-rect {
+    -fx-fill: #dce8f5;
+    -fx-stroke: #1351b4;
+    -fx-stroke-width: 1.5px;
+    -fx-arc-width: 10px;
+    -fx-arc-height: 10px;
+}
+
+/* Texto dentro do nó */
+.node-label {
+    -fx-font-size: 11px;
+    -fx-font-family: "Monospaced";
+    -fx-text-fill: #1a3a6b;
+}
+
+/* Botões do painel lateral da Demo */
+.btn-insert {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.btn-insert:hover {
+    -fx-background-color: #2E7D32;
+}
+
+.btn-search {
+    -fx-background-color: #1351b4;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.btn-search:hover {
+    -fx-background-color: #0d3d8c;
+}
+
+.btn-remove {
+    -fx-background-color: #c0392b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.btn-remove:hover {
+    -fx-background-color: #992d22;
+}
+
+.summary-title{
+    -fx-text-fill: #1351b4;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+
+}
+.summary-label{
+    -fx-text-fill:#6B7280;
+    -fx-font-weight: bold;
+    -fx-font-size: 12;
+
+
+}
+.summary-value{
+    -fx-text-fill:#6B7280;
+    -fx-font-weight: bold;
+    -fx-font-size: 11;
+
+}
+
+.title{
+
+    -fx-text-fill: #1351b4;
+   /* -fx-border-color: transparent transparent #1351b4 transparent;
+    -fx-border-width: 0 0 2px 0;*/
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+
+}
+.container{
+    -fx-background-color: #fff;
+
+}
+
+
+.list-view {
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+
+}
+.list-view .list-cell {
+    -fx-text-fill:#6B7280;
+    -fx-font-weight: bold;
+}
+
+.section-titleBox{
+    -fx-background-color:#F3F4F6;
+
+
+}
+
+.section-title{
+
+    -fx-text-fill:#6B7280;
+    -fx-font-weight: bold;
+    -fx-font-size: 12;
+
+
+}
+
+#lblAmountData{
+    -fx-text-fill:#6B7280;
+    -fx-font-weight: bold
+}
+

@@ -1,8 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.1.0'
-}
+    id 'org.openjfx.javafxplugin' version '0.0.14'}
 
 group = 'com.cpfindex'
 version = '1.0-SNAPSHOT'
@@ -23,8 +22,16 @@ javafx {
 
 dependencies {
     implementation 'org.json:json:20240303'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+
 }
 
 application {
     mainClass = 'com.cpfindex.Main'
+}
+
+
+
+test {
+    useJUnitPlatform()
 }

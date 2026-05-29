@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane  xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.OperationController">
+    <padding><Insets bottom="0" left="16" right="16" top="12" /></padding>
+
+    <!-- TOPO: status do carregamento -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="status-bar">
+            <padding><Insets bottom="8" left="16" right="16" top="8" /></padding>
+            <Label text="Base de dados:" />
+            <Label fx:id="lblLoading" style="-fx-text-fill: #e65100; -fx-font-weight: bold;" text="Carregando..." />
+            <Label fx:id="lblAmountData" text="" />
+        </HBox>
+    </top>
+
+    <!-- CENTRO: tabela de resultados de busca -->
+    <center>
+        <VBox prefWidth="400" prefHeight="100" spacing="12" styleClass="" >
+            <padding><Insets left="16" right="16"/></padding> <!-- gap entre colunas -->
+
+
+            <TableView fx:id="tableResult" styleClass="rounded"  VBox.vgrow="ALWAYS" >
+
+                <columns>
+                    <TableColumn fx:id="colCpf" prefWidth="160" text="CPF" />
+                    <TableColumn fx:id="colNome" prefWidth="250" text="Nome" />
+                    <TableColumn fx:id="colSituacao" prefWidth="100" text="Situação" />
+                </columns>
+                <placeholder>
+                    <Label text="Faça uma busca para ver resultados aqui." />
+                </placeholder>
+            </TableView>
+
+            <VBox spacing="12" VBox.vgrow="ALWAYS" styleClass="rounded, container">
+                <padding><Insets bottom="12" left="12" right="12" top="12"/></padding>
+
+                <Label text="Estatísticas da árvore:" styleClass="summary-title"/>
+
+                <HBox spacing="12">
+
+                    <!-- coluna da esquerda -->
+                    <GridPane hgap="12" vgap="8" HBox.hgrow="ALWAYS">
+                        <Label text="Total de nós:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="summary-label"/>
+                        <Label fx:id="lblAmountNodes" text="15" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="summary-value"/>
+
+                        <Label text="Altura da árvore:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="summary-label"/>
+                        <Label fx:id="lblHeight" text="8" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="summary-value"/>
+
+                        <Label text="Comparações (última busca):" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="summary-label"/>
+                        <Label fx:id="lblLastSearch" text="7" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="summary-value"/>
+                    </GridPane>
+
+                    <!-- coluna da direita -->
+                    <GridPane hgap="12" vgap="8" HBox.hgrow="ALWAYS">
+                        <Label text="Fator de Balanceamento:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="summary-label"/>
+                        <Label fx:id="lblBalancingFactor" text="5" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="summary-value"/>
+
+                        <Label text="Árvore Balanceada:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="summary-label"/>
+                        <Label fx:id="lblBalance" text="–" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="summary-value"/>
+                    </GridPane>
+
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+   <left>
+       <VBox prefWidth="280" prefHeight="100" spacing="12" styleClass="rounded, container"  BorderPane.alignment="CENTER" >
+           <padding><Insets top="16" left="24" bottom="24" right="24" /></padding>
+           <Label text="Operações" styleClass=" title" />
+
+
+           <!-- BUSCAR -->
+            <Label styleClass="section-title" text="Buscar CPF" />
+            <TextField fx:id="tfBuscarCpf" promptText="Digite o CPF..." maxWidth="250" styleClass="rouded" />
+            <Button maxWidth="250" onAction="#onSearch" styleClass="btn-search" text="  Buscar" />
+
+            <Separator />
+
+            <!-- CADASTRAR -->
+            <Label styleClass="section-title" text="Cadastrar CPF" />
+            <TextField fx:id="tfCadCpf" promptText="CPF" maxWidth="250" styleClass="rouded" />
+            <TextField fx:id="tfCadNome" promptText="Nome completo" maxWidth="250" styleClass="rouded"/>
+            <TextField fx:id="tfCadSit" promptText="Situação cadastral" maxWidth="250" styleClass="rouded" />
+            <Button maxWidth="250" onAction="#onInsert" styleClass="btn-insert" text="  Cadastrar" />
+
+            <Separator />
+
+            <!-- REMOVER -->
+            <Label styleClass="section-title" text="Remover CPF" />
+            <TextField fx:id="tfRemoverCpf" promptText="CPF para remover" maxWidth="250" styleClass="rouded" />
+            <Button maxWidth="250" onAction="#onRemove" styleClass="btn-remove" text="  Remover" />
+
+            <Separator />
+
+            <Label fx:id="lblStatus" style="-fx-font-size: 11; -fx-text-fill: #555;" text="" wrapText="true" />
+       </VBox>
+
+
+   </left>
+   <right>
+      <VBox prefWidth="400" prefHeight="100" BorderPane.alignment="CENTER" spacing="12" styleClass="container, rounded" >
+          <padding><Insets top="16" left="0" bottom="0" right="0"/></padding>
+
+        <children>
+            <Label text="Árvore em Ordem Crescente" styleClass="title" >
+                <VBox.margin><Insets left="12" /></VBox.margin>
+            </Label>
+            <HBox  maxWidth="Infinity" styleClass="section-titleBox" >
+                <padding><Insets top="4" left="0" bottom="4" right="0"/></padding>
+
+                <Label text="    Chave/CPF         ||          Nome —> Situação" styleClass="section-title" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+
+
+            </HBox>
+            <ListView fx:id="listViewInOrder" VBox.vgrow="ALWAYS" maxWidth="Infinity"  styleClass="rounded" />
+        </children>
+      </VBox>
+
+
+   </right>
+   <bottom>
+      <HBox prefHeight="200" prefWidth="200.0" spacing="12" styleClass="container" >
+
+          <BorderPane.margin><Insets top="16"/></BorderPane.margin>
+
+         <children>
+            <VBox HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="card-operations, rounded " prefHeight="200.0" prefWidth="200.0" />
+            <VBox HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="card-operations, rounded " prefHeight="200.0" prefWidth="200.0" />
+            <VBox HBox.hgrow="ALWAYS" maxWidth="Infinity"  styleClass="card-operations, rounded" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+   </bottom>
+
+</BorderPane>

@@ -1,22 +1,27 @@
 package com.cpfindex;
-import controller.ReceitaController;
-
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+public class Main extends Application {
 
-public class Main {
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/fxml/MainView.fxml")
+        );
+        Scene scene = new Scene(loader.load(), 1300, 900);
+        scene.getStylesheets().add(
+                getClass().getResource("/css/style.css").toExternalForm()
+        );
+        stage.setTitle("CPF Index — Receita Federal");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public static void main(String[] args) {
-        System.out.println("===SISTEMA RECEITA FEDERAL===");
-        System.out.println("Demonstração de uma BST");
-
-        ReceitaController controller = new ReceitaController();
-        controller.start();
-
-
+        launch(args);
     }
 }

@@ -1,162 +1,85 @@
 package controller;
 import model.*;
-import view.*;
+
+import java.util.List;
+
 
 public class ReceitaController{
 
-    private BinarySearchTree tree;
-    private MenuView menuView;
-    private DataGeneratorControler dataGeneratorControler;
+    private final BinarySearchTree tree;
+    private final LinkedList linkedList;
+    private final DataGeneratorControler dataGeneratorControler;
 
 
-    public ReceitaController(){
+    public ReceitaController() throws Exception{
         this.tree = new BinarySearchTree();
-        this.menuView = new MenuView();
-        try {
-            this.dataGeneratorControler = new DataGeneratorControler();
-        }catch (Exception error){
-             menuView.showError("Não foi possivel gerar base inicial(erro no Arquvo base JSON!" + error);
-        }
+        this.linkedList = new LinkedList();
+        this.dataGeneratorControler = new DataGeneratorControler();
+
+    }
+
+    // Construtor para testes — não carrega o JSON
+  /*  public ReceitaController(BinarySearchTree tree) {
+        this.tree = tree;
+        this.dataGeneratorControler = null;
+    }
+*/
+
+
+    public void populateBstBase(int amount) {
+        dataGeneratorControler.populateInitialBase(this.tree, amount);
+    }
+    public void populateLkdBase(int amount) {
+        dataGeneratorControler.populateInitialBase(this.linkedList, amount);
     }
 
 
-    public void start(){
-        boolean run = true;
-
-        menuView.showMessage("Gerando dados iniciais na base");
-        dataGeneratorControler.populateInitialBase(this.tree, 1000000);
-        menuView.showSucces("Base de dados carregada com sucesso!");
+    public String registerCPF(String cpf, String name, String situation){
 
 
-    while (run){
-        try {
-            menuView.mainMenu();
-            int option = menuView.readInt("");
 
-            switch (option){
-
-                case 1:
-                    registerCPF();
-                    break;
-                case 2:
-                    searchCPF();
-                    break;
-                case 3:
-                    removeCPF();
-                    break;
-                case 4:
-                    listCPF();
-                    break;
-                case 0:
-                    run = false;
-                    menuView.showMessage("Encerrando sistema...");
-                    break;
-                default:
-                    menuView.showError("Opção inválida!");
-
-            }
-            if (option != 0){
-                menuView.waitEnter();
-            }
-        }catch (Exception e){
-            menuView.showError("Erro: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    }// fim start
-
-    public  void registerCPF(){
-        menuView.showMessage("\n---CADASTRAR NOVO CPF--- ");
-
-        String cpf = menuView.readString("cpf: aprenas números");
-
-        //validação de cpf
-
-
-        if(!validateCPF(cpf)){
-            menuView.showError("CPF Inválido!");
-
-            return;
-        }
-
-        if (tree.search(cpf) != null){
-            menuView.showError("CPF já cadastrado");
-            return;
-        }
-
-        String name = menuView.readString("Nome completo");
-        String situation = menuView.readString("Situação: ");
-
+        if(!validateCPF(cpf)) return "CPF Inválido";
         Contribuinte contribuinte = new Contribuinte(cpf, name, situation);
+        boolean inserted = tree.insert(contribuinte);
 
 
-        tree.insert(contribuinte);
-
-        menuView.showSucces("CPF cadastrado com sucesso!");
-
-
-    }
-
-   public void searchCPF(){
-        menuView.showMessage("\n----CONSULTA DE CPF----");
-        String cpf = menuView.readString("Digite o cpf(apenas números):");
-
-        if (!validateCPF(cpf)){
-            menuView.showError("CPF inválido!");
-
-        }
-
-        Contribuinte result = tree.search(cpf);
-
-        if (result != null){
-            menuView.showSucces("cpf encontrado: " + result.getCpfFormatted());
-            menuView.showMessage("Nome do Contribuinte: " + result.getNome());
-            menuView.showMessage("Situação cadastral: " + result.getSituation());
-
-
-        }else {
-            menuView.showError("CPF não encontrado a base de dados!");
-        }
-
-    }
-    public void removeCPF(){
-        menuView.showMessage("\n----REMOVÇÃO DE CPF----");
-        String cpf = menuView.readString("Digite o CPF para remoção:");
-
-        if (!validateCPF(cpf)){
-            menuView.showError("CPF inválido!");
-            return;
-        }
-
-        boolean result = tree.delete(cpf);
-
-        if (result){
-            menuView.showSucces("CPF removido com sucesso!");
-        }else{
-            menuView.showError("CPF não encontrado na base de dados para a remoção!");
-        }
-
-    }
-
-    public void listCPF(){
-        menuView.showMessage("\n----Listar cpf ----");
-
-
-        //Falta implementar métodos de listagem em relatório
+        return inserted ? "Contribuinte Cadastrado com sucesso" : "CPF Duplicado";
 
 
     }
+
+
+
+   public Contribuinte searchCPF(String cpf){
+
+        String cleanCPF = cpf.replaceAll("[^0-9]", "" );
+        if (!validateCPF(cleanCPF)) return null;
+
+
+        return tree.search(cleanCPF);
+
+    }
+
+
+    public boolean removeCPF(String cpf){
+        String cleanCPF = cpf.replaceAll("[^0-9]", "");
+
+        if (!validateCPF(cleanCPF)) return false;
+
+        return tree.delete(cleanCPF);
+
+    }
+
+    public List<Contribuinte> listCPF(){ return tree.inOrder(); }
 
     private boolean validateCPF(String cpf){
 
         String cleanCPF = cpf.replaceAll("[^0-9]", "");
-        if(cleanCPF.length() != 11) return false;
+        return cleanCPF.length() == 11;
 
         //Falta implementar algoritmo de validação de dígitos verificadores
-
-        return true;
     }
+
 
     private String formatCPF(String cpf){
         String cleanCPF = cpf.replaceAll("[^0-9]", "");
@@ -168,6 +91,78 @@ public class ReceitaController{
                 cpf.substring(9,11));
 
     }
+
+    public int getBstHeight(){
+        return tree.bstHeight();
+    }
+    public int getBstNodeAmount(){
+        return tree.getAmount();
+    }
+    public int getBstAmountLastSearch(){
+        return tree.getSearchCount();
+    }
+    public int getBstBalanceFactor(){
+        return tree.balanceFactor();
+    }
+    public boolean isBalanced(){
+        return tree.balanceFactor() == 0;
+
+    }
+
+    // Métodos da linked List
+
+    public int getListSearchCount(){
+        return linkedList.getSearchCount();
+    }
+    public int getListAmount(){
+        return linkedList.getAmount();
+    }
+
+
+
+
+
+    public Contribuinte searchCPFOnList(String cpf){
+
+        String cleanCPF = cpf.replaceAll("[^0-9]", "" );
+        if (!validateCPF(cleanCPF)) return null;
+
+
+        return linkedList.search(cleanCPF);
+
+    }
+
+
+
+    // ── Busca comparativa (aba Comparação) ────────────────────────────────────
+
+    private long bstSearchTimeNs;
+    private long listSearchTimeNs;
+
+    public Contribuinte compareBstSearch(String cpf) {
+        String clean = cpf.replaceAll("[^0-9]", "");
+        if (!validateCPF(clean)) return null;
+        long start = System.nanoTime();
+        Contribuinte result = tree.search(clean);
+        bstSearchTimeNs = System.nanoTime() - start;
+        return result;
+    }
+
+    public Contribuinte compareListSearch(String cpf) {
+        String clean = cpf.replaceAll("[^0-9]", "");
+        if (!validateCPF(clean)) return null;
+        long start = System.nanoTime();
+        Contribuinte result = linkedList.search(clean);
+        listSearchTimeNs = System.nanoTime() - start;
+        return result;
+    }
+
+    public int getCompareBstSearchCount()  { return tree.getSearchCount(); }
+    public int getCompareListSearchCount() { return linkedList.getSearchCount(); }
+    public long getBstSearchTimeNs()       { return bstSearchTimeNs; }
+    public long getListSearchTimeNs()      { return listSearchTimeNs; }
+
+
 
 
 

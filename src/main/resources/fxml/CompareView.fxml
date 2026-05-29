@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.CompareController">
+    <padding><Insets bottom="16" left="16" right="16" top="12"/></padding>
+
+    <!-- TOPO: status de carregamento -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="status-bar">
+            <padding><Insets bottom="8" left="16" right="16" top="8"/></padding>
+            <Label text="Base de dados:" />
+            <Label fx:id="lblLoading"
+                   style="-fx-text-fill: #e65100; -fx-font-weight: bold;"
+                   text="Aguardando..." />
+        </HBox>
+    </top>
+
+    <!-- CENTRO: painéis BST e Lista lado a lado -->
+    <center>
+        <VBox spacing="16">
+            <padding><Insets top="16"/></padding>
+
+            <!-- Campo de busca -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="CPF para buscar:"
+                       style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                <TextField fx:id="tfCpf"
+                           promptText="Digite o CPF..."
+                           prefWidth="200"/>
+                <Button fx:id="btnCompare"
+                        text="  Comparar"
+                        onAction="#onCompare"
+                        styleClass="btn-search"/>
+            </HBox>
+
+            <!-- Painéis das estruturas -->
+            <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+                <!-- BST -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS" styleClass="rounded"
+                      style="-fx-padding: 20;">
+                    <Label text="🌳  BST"
+                           style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #1351b4;"/>
+                    <Separator/>
+
+                    <GridPane hgap="12" vgap="10">
+                        <Label text="Resultado:"
+                               styleClass="summary-label"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblBstResult" text="—"
+                               styleClass="summary-value"
+                               GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Comparações:"
+                               styleClass="summary-label"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblBstComparisons" text="—"
+                               styleClass="summary-value"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Tempo de busca:"
+                               styleClass="summary-label"
+                               GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblBstTime" text="—"
+                               styleClass="summary-value"
+                               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- Lista Ligada -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS" styleClass="rounded"
+                      style="-fx-padding: 20;">
+                    <Label text="🔗  Lista Ligada"
+                           style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #1351b4;"/>
+                    <Separator/>
+
+                    <GridPane hgap="12" vgap="10">
+                        <Label text="Resultado:"
+                               styleClass="summary-label"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblListResult" text="—"
+                               styleClass="summary-value"
+                               GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Comparações:"
+                               styleClass="summary-label"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblListComparisons" text="—"
+                               styleClass="summary-value"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Tempo de busca:"
+                               styleClass="summary-label"
+                               GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="lblListTime" text="—"
+                               styleClass="summary-value"
+                               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+            </HBox>
+
+            <!-- Veredito -->
+            <HBox alignment="CENTER" styleClass="rounded" style="-fx-padding: 14;">
+                <Label fx:id="lblVerdict"
+                       text="Faça uma busca para ver o comparativo."
+                       style="-fx-font-size: 13; -fx-text-fill: #1a3a6b; -fx-font-weight: bold;"
+                       wrapText="true"/>
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
