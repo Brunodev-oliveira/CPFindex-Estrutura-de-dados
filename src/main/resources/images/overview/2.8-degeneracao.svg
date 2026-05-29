@@ -1,0 +1,80 @@
+<svg viewBox="0 0 860 420" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="860" height="420" fill="#f8f9fa"/>
+  <text x="430" y="34" text-anchor="middle" fill="#1351B4" font-size="18" font-weight="bold">Degeneração — quando O(log n) vira O(n)</text>
+
+  <!-- LEFT: balanced -->
+  <rect x="20" y="55" width="380" height="350" rx="12" fill="white" stroke="#1351B4" stroke-width="2"/>
+  <rect x="20" y="55" width="380" height="44" rx="12" fill="#1351B4"/>
+  <rect x="20" y="83" width="380" height="16" fill="#1351B4"/>
+  <text x="210" y="84" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Árvore Balanceada — O(log n) ✓</text>
+  <text x="210" y="116" text-anchor="middle" fill="#555" font-size="11">inserção: 4, 2, 6, 1, 3, 5, 7</text>
+
+  <rect x="180" y="128" width="60" height="30" rx="6" fill="#1351B4"/>
+  <text x="210" y="147" text-anchor="middle" fill="white" font-size="14" font-weight="bold">4</text>
+
+  <rect x="100" y="188" width="56" height="30" rx="6" fill="#1351B4" opacity="0.85"/>
+  <text x="128" y="207" text-anchor="middle" fill="white" font-size="14">2</text>
+  <rect x="264" y="188" width="56" height="30" rx="6" fill="#1351B4" opacity="0.85"/>
+  <text x="292" y="207" text-anchor="middle" fill="white" font-size="14">6</text>
+
+  <rect x="56" y="248" width="50" height="30" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="81" y="267" text-anchor="middle" fill="#1351B4" font-size="14">1</text>
+  <rect x="148" y="248" width="50" height="30" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="173" y="267" text-anchor="middle" fill="#1351B4" font-size="14">3</text>
+  <rect x="244" y="248" width="50" height="30" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="269" y="267" text-anchor="middle" fill="#1351B4" font-size="14">5</text>
+  <rect x="336" y="248" width="50" height="30" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="361" y="267" text-anchor="middle" fill="#1351B4" font-size="14">7</text>
+
+  <line x1="210" y1="158" x2="128" y2="188" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="210" y1="158" x2="292" y2="188" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="128" y1="218" x2="81" y2="248" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="128" y1="218" x2="173" y2="248" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="292" y1="218" x2="269" y2="248" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="292" y1="218" x2="361" y2="248" stroke="#1351B4" stroke-width="1.5"/>
+
+  <!-- height annotation -->
+  <line x1="50" y1="128" x2="50" y2="278" stroke="#1351B4" stroke-width="1.5" stroke-dasharray="4"/>
+  <line x1="44" y1="128" x2="56" y2="128" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="44" y1="278" x2="56" y2="278" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="38" y="210" fill="#1351B4" font-size="11" text-anchor="middle" transform="rotate(-90,38,210)">altura = 3</text>
+
+  <rect x="80" y="310" width="260" height="28" rx="6" fill="#e8f0fe"/>
+  <text x="210" y="328" text-anchor="middle" fill="#1351B4" font-size="12" font-weight="bold">busca: ~3 comparações para 7 nós</text>
+
+  <!-- VS -->
+  <circle cx="430" cy="240" r="24" fill="#1351B4" stroke="white" stroke-width="2"/>
+  <text x="430" y="246" text-anchor="middle" fill="white" font-size="14" font-weight="bold">VS</text>
+
+  <!-- RIGHT: degenerate -->
+  <rect x="460" y="55" width="380" height="350" rx="12" fill="white" stroke="#e63946" stroke-width="2"/>
+  <rect x="460" y="55" width="380" height="44" rx="12" fill="#e63946"/>
+  <rect x="460" y="83" width="380" height="16" fill="#e63946"/>
+  <text x="650" y="84" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Árvore Degenerada — O(n) ✗</text>
+  <text x="650" y="116" text-anchor="middle" fill="#555" font-size="11">inserção: 1, 2, 3, 4, 5, 6, 7 (crescente)</text>
+
+  <rect x="500" y="128" width="50" height="30" rx="6" fill="#e63946" opacity="0.9"/>
+  <text x="525" y="147" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1</text>
+  <line x1="525" y1="158" x2="565" y2="182" stroke="#e63946" stroke-width="1.5"/>
+
+  <rect x="540" y="182" width="50" height="30" rx="6" fill="#e63946" opacity="0.8"/>
+  <text x="565" y="201" text-anchor="middle" fill="white" font-size="14">2</text>
+  <line x1="565" y1="212" x2="605" y2="236" stroke="#e63946" stroke-width="1.5"/>
+
+  <rect x="580" y="236" width="50" height="30" rx="6" fill="#e63946" opacity="0.7"/>
+  <text x="605" y="255" text-anchor="middle" fill="white" font-size="14">3</text>
+  <line x1="605" y1="266" x2="645" y2="290" stroke="#e63946" stroke-width="1.5"/>
+
+  <rect x="620" y="290" width="50" height="30" rx="6" fill="#e63946" opacity="0.6"/>
+  <text x="645" y="309" text-anchor="middle" fill="white" font-size="14">4</text>
+  <line x1="645" y1="320" x2="685" y2="340" stroke="#e63946" stroke-width="1.5" stroke-dasharray="4"/>
+
+  <text x="700" y="360" fill="#e63946" font-size="22">⋱</text>
+
+  <!-- bracket annotation -->
+  <line x1="790" y1="128" x2="790" y2="360" stroke="#e63946" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="812" y="250" fill="#e63946" font-size="11" text-anchor="middle" transform="rotate(90,812,250)">altura = n</text>
+
+  <rect x="480" y="310" width="340" height="28" rx="6" fill="#fde8e8"/>
+  <text x="650" y="328" text-anchor="middle" fill="#e63946" font-size="12" font-weight="bold">busca: até 7 comparações — vira lista ligada</text>
+</svg>

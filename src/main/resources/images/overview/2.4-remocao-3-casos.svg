@@ -1,0 +1,83 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="900" height="460" fill="#f8f9fa"/>
+  <text x="450" y="36" text-anchor="middle" fill="#1351B4" font-size="18" font-weight="bold">Remoção — 3 Casos</text>
+
+  <!-- CASE 1 -->
+  <rect x="20" y="55" width="260" height="380" rx="12" fill="white" stroke="#1351B4" stroke-width="2"/>
+  <rect x="20" y="55" width="260" height="44" rx="12" fill="#1351B4"/>
+  <rect x="20" y="83" width="260" height="16" fill="#1351B4"/>
+  <text x="150" y="84" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Caso 1 — Nó Folha</text>
+
+  <rect x="90" y="116" width="120" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="150" y="136" text-anchor="middle" fill="#1351B4" font-size="12">pai</text>
+  <line x1="150" y1="148" x2="150" y2="172" stroke="#1351B4" stroke-width="1.5"/>
+  <rect x="90" y="172" width="120" height="32" rx="6" fill="#e63946" stroke="#c1121f" stroke-width="2"/>
+  <text x="150" y="192" text-anchor="middle" fill="white" font-size="12" font-weight="bold">folha ← remover</text>
+  <text x="150" y="230" text-anchor="middle" fill="#555" font-size="11">sem filhos</text>
+
+  <text x="150" y="258" text-anchor="middle" fill="#555" font-size="20">↓</text>
+
+  <rect x="90" y="270" width="120" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="150" y="290" text-anchor="middle" fill="#1351B4" font-size="12">pai</text>
+  <line x1="150" y1="302" x2="150" y2="326" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5"/>
+  <text x="150" y="342" text-anchor="middle" fill="#aaa" font-size="12">null</text>
+  <text x="150" y="370" text-anchor="middle" fill="#1351B4" font-size="11">pai aponta para null</text>
+  <rect x="50" y="390" width="200" height="28" rx="6" fill="#e8f0fe"/>
+  <text x="150" y="408" text-anchor="middle" fill="#1351B4" font-size="11" font-weight="bold">simples — sem impacto</text>
+
+  <!-- CASE 2 -->
+  <rect x="320" y="55" width="260" height="380" rx="12" fill="white" stroke="#1351B4" stroke-width="2"/>
+  <rect x="320" y="55" width="260" height="44" rx="12" fill="#1351B4"/>
+  <rect x="320" y="83" width="260" height="16" fill="#1351B4"/>
+  <text x="450" y="84" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Caso 2 — Um Filho</text>
+
+  <rect x="390" y="116" width="120" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="450" y="136" text-anchor="middle" fill="#1351B4" font-size="12">pai</text>
+  <line x1="450" y1="148" x2="450" y2="172" stroke="#1351B4" stroke-width="1.5"/>
+  <rect x="390" y="172" width="120" height="32" rx="6" fill="#e63946" stroke="#c1121f" stroke-width="2"/>
+  <text x="450" y="192" text-anchor="middle" fill="white" font-size="12" font-weight="bold">remover</text>
+  <line x1="450" y1="204" x2="450" y2="228" stroke="#1351B4" stroke-width="1.5"/>
+  <rect x="390" y="228" width="120" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="450" y="248" text-anchor="middle" fill="#1351B4" font-size="12">filho único</text>
+
+  <text x="450" y="282" text-anchor="middle" fill="#555" font-size="20">↓</text>
+
+  <rect x="390" y="294" width="120" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="450" y="314" text-anchor="middle" fill="#1351B4" font-size="12">pai</text>
+  <line x1="450" y1="326" x2="450" y2="350" stroke="#1351B4" stroke-width="2"/>
+  <rect x="390" y="350" width="120" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="450" y="370" text-anchor="middle" fill="#1351B4" font-size="12">filho único</text>
+  <rect x="350" y="395" width="200" height="28" rx="6" fill="#e8f0fe"/>
+  <text x="450" y="413" text-anchor="middle" fill="#1351B4" font-size="11" font-weight="bold">pai redirecionado ao filho</text>
+
+  <!-- CASE 3 -->
+  <rect x="620" y="55" width="260" height="380" rx="12" fill="white" stroke="#F5A800" stroke-width="2.5"/>
+  <rect x="620" y="55" width="260" height="44" rx="12" fill="#F5A800"/>
+  <rect x="620" y="83" width="260" height="16" fill="#F5A800"/>
+  <text x="750" y="84" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Caso 3 — Dois Filhos ★</text>
+
+  <rect x="690" y="112" width="120" height="32" rx="6" fill="#e63946" stroke="#c1121f" stroke-width="2"/>
+  <text x="750" y="132" text-anchor="middle" fill="white" font-size="12" font-weight="bold">remover</text>
+  <line x1="720" y1="144" x2="680" y2="168" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="780" y1="144" x2="820" y2="168" stroke="#F5A800" stroke-width="2"/>
+
+  <rect x="640" y="168" width="80" height="28" rx="5" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="680" y="186" text-anchor="middle" fill="#1351B4" font-size="11">esq</text>
+
+  <rect x="780" y="168" width="80" height="28" rx="5" fill="#F5A800" stroke="#c47f00" stroke-width="2"/>
+  <text x="820" y="186" text-anchor="middle" fill="white" font-size="11" font-weight="bold">dir →</text>
+
+  <line x1="820" y1="196" x2="790" y2="220" stroke="#F5A800" stroke-width="2"/>
+  <rect x="750" y="220" width="80" height="28" rx="5" fill="#F5A800" stroke="#c47f00" stroke-width="2"/>
+  <text x="790" y="238" text-anchor="middle" fill="white" font-size="11" font-weight="bold">↙ mín</text>
+
+  <rect x="750" y="268" width="120" height="28" rx="5" fill="#1351B4"/>
+  <text x="810" y="286" text-anchor="middle" fill="white" font-size="11">sucessor in-order</text>
+
+  <text x="750" y="320" text-anchor="middle" fill="#555" font-size="11">1. copia dados do sucessor</text>
+  <text x="750" y="338" text-anchor="middle" fill="#555" font-size="11">2. remove o sucessor original</text>
+  <text x="750" y="356" text-anchor="middle" fill="#555" font-size="11">(tem no máx. 1 filho direito)</text>
+
+  <rect x="640" y="375" width="220" height="28" rx="6" fill="#F5A800"/>
+  <text x="750" y="393" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ordem da árvore preservada ✓</text>
+</svg>

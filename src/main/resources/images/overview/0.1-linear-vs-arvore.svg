@@ -1,0 +1,86 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="900" height="420" fill="#f8f9fa"/>
+
+  <!-- LEFT PANEL: Linear -->
+  <rect x="20" y="10" width="400" height="400" rx="12" fill="white" stroke="#1351B4" stroke-width="2"/>
+  <rect x="20" y="10" width="400" height="48" rx="12" fill="#1351B4"/>
+  <rect x="20" y="40" width="400" height="18" fill="#1351B4"/>
+  <text x="220" y="42" text-anchor="middle" fill="white" font-size="17" font-weight="bold">Lista Ligada — O(n)</text>
+
+  <!-- list nodes -->
+  <g id="list">
+    <rect x="50" y="80" width="340" height="36" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="220" y="103" text-anchor="middle" fill="#1351B4" font-size="13">000.003.782-67</text>
+
+    <rect x="50" y="126" width="340" height="36" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="220" y="149" text-anchor="middle" fill="#1351B4" font-size="13">000.015.083-50</text>
+
+    <rect x="50" y="172" width="340" height="36" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="220" y="195" text-anchor="middle" fill="#1351B4" font-size="13">000.098.441-22</text>
+
+    <rect x="50" y="218" width="340" height="36" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="220" y="241" text-anchor="middle" fill="#1351B4" font-size="13">000.423.119-05</text>
+
+    <!-- scanning arrow -->
+    <line x1="30" y1="80" x2="30" y2="254" stroke="#e63946" stroke-width="3"/>
+    <polygon points="30,258 25,245 35,245" fill="#e63946"/>
+    <text x="32" y="270" fill="#e63946" font-size="11" font-weight="bold">percorre</text>
+    <text x="32" y="283" fill="#e63946" font-size="11" font-weight="bold">um a um</text>
+
+    <!-- dots -->
+    <text x="220" y="275" text-anchor="middle" fill="#888" font-size="22" letter-spacing="6">. . .</text>
+
+    <rect x="50" y="290" width="340" height="36" rx="6" fill="#F5A800" stroke="#c47f00" stroke-width="1.5"/>
+    <text x="220" y="313" text-anchor="middle" fill="white" font-size="13" font-weight="bold">728.239.367-26 ← alvo</text>
+  </g>
+
+  <!-- comparisons label -->
+  <rect x="50" y="345" width="340" height="36" rx="8" fill="#e63946"/>
+  <text x="220" y="368" text-anchor="middle" fill="white" font-size="14" font-weight="bold">até 1.000.000 comparações</text>
+
+  <!-- RIGHT PANEL: BST -->
+  <rect x="480" y="10" width="400" height="400" rx="12" fill="white" stroke="#1351B4" stroke-width="2"/>
+  <rect x="480" y="10" width="400" height="48" rx="12" fill="#1351B4"/>
+  <rect x="480" y="40" width="400" height="18" fill="#1351B4"/>
+  <text x="680" y="42" text-anchor="middle" fill="white" font-size="17" font-weight="bold">Árvore BST — O(log n)</text>
+
+  <!-- BST nodes -->
+  <!-- root -->
+  <rect x="620" y="72" width="120" height="34" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="680" y="93" text-anchor="middle" fill="#1351B4" font-size="12">448.009.649-38</text>
+
+  <!-- level 2 left -->
+  <rect x="510" y="138" width="120" height="34" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+  <text x="570" y="159" text-anchor="middle" fill="#1351B4" font-size="12">379.420.305-47</text>
+  <!-- level 2 right -->
+  <rect x="730" y="138" width="120" height="34" rx="6" fill="#F5A800" stroke="#c47f00" stroke-width="2"/>
+  <text x="790" y="159" text-anchor="middle" fill="white" font-size="12" font-weight="bold">782.758.194-31</text>
+
+  <!-- level 3 right-right -->
+  <rect x="730" y="204" width="120" height="34" rx="6" fill="#F5A800" stroke="#c47f00" stroke-width="2"/>
+  <text x="790" y="225" text-anchor="middle" fill="white" font-size="12" font-weight="bold">790.851.410-36</text>
+
+  <!-- level 4 -->
+  <rect x="650" y="270" width="120" height="34" rx="6" fill="#1351B4" stroke="#0a3a8a" stroke-width="2"/>
+  <text x="710" y="291" text-anchor="middle" fill="white" font-size="12" font-weight="bold">728.239.367-26</text>
+  <text x="710" y="306" text-anchor="middle" fill="#F5A800" font-size="10">← alvo encontrado</text>
+
+  <!-- lines -->
+  <line x1="680" y1="106" x2="570" y2="138" stroke="#1351B4" stroke-width="1.5"/>
+  <line x1="680" y1="106" x2="790" y2="138" stroke="#F5A800" stroke-width="2.5"/>
+  <line x1="790" y1="172" x2="790" y2="204" stroke="#F5A800" stroke-width="2.5"/>
+  <line x1="790" y1="238" x2="710" y2="270" stroke="#F5A800" stroke-width="2.5"/>
+
+  <!-- path label -->
+  <text x="840" y="165" fill="#F5A800" font-size="11" font-weight="bold">→ direita</text>
+  <text x="840" y="231" fill="#F5A800" font-size="11" font-weight="bold">→ direita</text>
+  <text x="840" y="287" fill="#F5A800" font-size="11" font-weight="bold">→ esq</text>
+
+  <!-- comparisons label -->
+  <rect x="510" y="330" width="340" height="36" rx="8" fill="#1351B4"/>
+  <text x="680" y="353" text-anchor="middle" fill="white" font-size="14" font-weight="bold">apenas 28 comparações</text>
+
+  <!-- VS badge -->
+  <circle cx="450" cy="210" r="26" fill="#1351B4" stroke="white" stroke-width="3"/>
+  <text x="450" y="216" text-anchor="middle" fill="white" font-size="16" font-weight="bold">VS</text>
+</svg>

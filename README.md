@@ -1,141 +1,215 @@
-# Verificador CPF — Sistema Receita Federal
 
-Projeto acadêmico em Java que simula um sistema de consulta de CPF utilizando uma **Árvore Binária de Busca (BST)** como estrutura de dados principal.
+# Verificador CPF
 
----
+Sistema acadêmico desenvolvido em **Java + JavaFX** com foco em **indexação de dados utilizando Árvore Binária de Busca (BST)** para armazenar e consultar registros de contribuintes por CPF.
 
-## 📋 Sobre o Projeto
-
-O sistema permite:
-- Cadastrar CPFs na base de dados
-- Consultar CPFs existentes
-- Remover CPFs da base
-- Carregar automaticamente 1.000.000 de registros de um arquivo `mock.json` na inicialização
-
-**Estruturas de dados implementadas:** `BinarySearchTree`, `LinkedList`, `NoBst`, `NodeLkdList`
+O projeto foi criado para demonstrar, na prática, como estruturas de dados impactam desempenho, organização e escalabilidade.
 
 ---
 
-## 🛠️ Pré-requisitos
+# 📸 Visão Geral do Sistema
 
-| Ferramenta | Versão mínima | Download |
-|------------|---------------|----------|
-| Java JDK   | 17+           | https://adoptium.net |
-| IntelliJ IDEA (recomendado) | Qualquer | https://www.jetbrains.com/idea |
+## Menu principal
 
-> **Não é necessário instalar o Gradle manualmente.** O projeto usa o **Gradle Wrapper** (`gradlew`), que baixa a versão correta automaticamente na primeira execução.
+![Tela principal](./src/main/resources/images/overview/tela-do-sistema.png)
+
+## Operações sobre os dados
+
+![Operações](./src/main/resources/images/overview/aba-operações.png)
+
+## Demonstração da árvore
+
+![Demonstração](./src/main/resources/images/overview/aba-demonstração.png)
+
+## Comparação entre abordagens
+
+![Comparação](./src/main/resources/images/overview/aba-comparação.png)
 
 ---
 
-## ⚠️ Arquivo mock.json (necessário para rodar)
+# 🎯 Objetivos do Projeto
 
-O arquivo `src/mock.json` **não está no repositório** (está no `.gitignore` por ter ~93MB). Sem ele, o sistema vai falhar ao iniciar.
+- Demonstrar uso prático de BST
+- Comparar busca linear vs busca indexada
+- Trabalhar arquitetura MVC
+- Manipular grandes massas de dados
+- Visualizar estruturas de dados graficamente
+- Aplicar conceitos de persistência e organização de software
 
-**Baixe pelo Google Drive do grupo:** https://drive.google.com/drive/folders/1FiRC3OePOqhtf-i3cLqjTp6Z2eLGsXx0?usp=sharing
+---
 
-Após baixar, coloque o arquivo no seguinte caminho dentro do projeto:
+# 🏛 Arquitetura do Projeto
 
-```
+O projeto segue o padrão **MVC (Model-View-Controller)**.
+
+![MVC](./src/main/resources/images/overview/4.1-mvc-fluxo.svg)
+
+## Estrutura real do projeto
+
+```text
 verificador-cpf/
-└── src/
-    └── mock.json   ← coloque aqui
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── com/cpfindex/
+│   │   │   │   └── Main.java
+│   │   │   ├── controller/
+│   │   │   ├── model/
+│   │   │   └── view/
+│   │   └── resources/
+│   │       ├── css/
+│   │       ├── fxml/
+│   │       └── images/
+├── gradle/
+├── build.gradle
+├── settings.gradle
+└── imagens/
 ```
 
 ---
 
-## ⚙️ Configuração do Projeto no IntelliJ IDEA
+# 🧠 Estruturas de Dados Utilizadas
 
-1. **Abra o projeto**
-   - Vá em `File → Open` e selecione a pasta `verificador-cpf`
-   - O IntelliJ vai detectar o arquivo `build.gradle` e perguntar: **"Open as Gradle project?"** → clique em **Trust Project**
+## Árvore Binária de Busca (BST)
 
-2. **Aguarde a sincronização**
-   - O IntelliJ vai baixar as dependências automaticamente (requer internet na primeira vez)
-   - Você verá o progresso na barra inferior
+Estrutura principal usada para indexação dos CPFs.
 
-3. **Verifique o JDK**
-   - Vá em `File → Project Structure → Project`
-   - Certifique-se de que o **SDK** está configurado como Java 17 ou superior
-   - Se não aparecer nenhum JDK, clique em `Add SDK → Download JDK`
+![BST](./src/main/resources/images/overview/2.1-bst-cpfs-reais.svg)
+
+Operações implementadas:
+
+- Inserção
+- Busca
+- Remoção
+- Percursos
+- Navegação visual
+
+### Inserção
+
+![Inserção](./src/main/resources/images/overview/2.2-insercao.svg)
+
+### Busca
+
+![Busca](./src/main/resources/images/overview/2.3-busca.svg)
+
+### Remoção
+
+![Remoção](./src/main/resources/images/overview/2.4-remocao-3-casos.svg)
+
+### Percursos
+
+![Percursos](./src/main/resources/images/overview/2.5-tres-percursos.svg)
 
 ---
 
-## ▶️ Como Executar
+# 📊 Comparação de Estratégias
 
-### Via IntelliJ IDEA
-- Abra o arquivo `src/main/java/com/cpfindex/Main.java`
-- Clique no botão **▶ Run** ao lado do método `main`
+O sistema permite comparar:
 
-### Via terminal (linha de comando)
+- Busca linear
+- Busca indexada por árvore
 
-**Linux/macOS:**
+![Comparação](./src/main/resources/images/overview/0.1-linear-vs-arvore.svg)
+
+Objetivo:
+
+Avaliar o ganho de desempenho obtido pela indexação.
+
+---
+
+# 📦 Componentes Principais
+
+## Model
+
+| Classe | Função |
+|------|------|
+| BinarySearchTree | Implementação da BST |
+| NodeBst | Nó da árvore |
+| NodeBstVisual | Nó visual |
+| LinkedList | Estrutura auxiliar |
+| NodeLkdList | Nó auxiliar |
+| Contribuinte | Entidade principal |
+| CpfRepository | Persistência e gerenciamento |
+
+## Controller
+
+| Classe | Função |
+|------|------|
+| ReceitaController | Regras de negócio |
+| DataGeneratorControler | Geração/carregamento de dados |
+
+## View
+
+| Classe | Função |
+|------|------|
+| MenuView | Navegação |
+| OperationController | Operações CRUD |
+| DemoController | Demonstrações |
+| CompareController | Comparações |
+| RelatorioView | Relatórios |
+| TreePane | Renderização gráfica |
+
+---
+
+# ⚙️ Requisitos
+
+- Java 17+
+- Gradle
+- JavaFX
+
+---
+
+# ▶️ Como Executar
+
+## Clonar o projeto
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd verificador-cpf
+```
+
+## Linux / Mac
+
 ```bash
 ./gradlew run
 ```
 
-**Windows:**
-```cmd
+## Windows
+
+```bash
 gradlew.bat run
 ```
 
-> Na primeira execução, o Gradle Wrapper vai baixar o Gradle 9.0.0 automaticamente. Isso pode levar alguns minutos dependendo da conexão.
+## Gerar build
 
----
-
-## 📦 Estrutura do Projeto
-
-```
-verificador-cpf/
-├── src/
-│   └── main/java/
-│       ├── com/cpfindex/
-│       │   └── Main.java               ← Ponto de entrada
-│       ├── controller/
-│       │   ├── ReceitaController.java  ← Lógica principal do sistema
-│       │   └── DataGeneratorControler.java ← Carrega o mock.json
-│       ├── model/
-│       │   ├── BinarySearchTree.java   ← Estrutura BST
-│       │   ├── NoBst.java              ← Nó da BST
-│       │   ├── LinkedList.java         ← Lista encadeada
-│       │   ├── NodeLkdList.java        ← Nó da lista
-│       │   └── Contribuinte.java       ← Modelo de dados
-│       └── view/
-│           ├── MenuView.java           ← Interface de texto
-│           └── RelatorioView.java      ← Exibição de relatórios
-├── src/mock.json                       ← Base de dados inicial (baixar pelo Drive)
-├── build.gradle                        ← Configuração do build
-├── gradlew / gradlew.bat               ← Gradle Wrapper
-└── gradle/wrapper/
-    └── gradle-wrapper.properties       ← Define versão do Gradle (9.0.0)
-```
-
----
-
-## 📄 Dependências (build.gradle)
-
-```groovy
-dependencies {
-    implementation 'org.json:json:20240303'
-}
-```
-
-A única dependência externa é a biblioteca `org.json` para leitura do `mock.json`. Ela é baixada automaticamente pelo Gradle via Maven Central.
-
----
-
-## ❓ Problemas Comuns
-
-**"Could not find tools.jar"**
-→ Certifique-se de ter o **JDK** instalado (não apenas o JRE). Configure o caminho em `File → Project Structure`.
-
-**"Permission denied: ./gradlew" (Linux/macOS)**
-→ Execute no terminal:
 ```bash
-chmod +x gradlew
+./gradlew build
 ```
 
-**O projeto não reconhece como Gradle**
-→ Clique com o botão direito no arquivo `build.gradle` → `Link Gradle Project`
+## Executar testes
 
-**Demora muito para iniciar**
-→ Normal na primeira execução. O sistema carrega 1 milhão de registros do `mock.json` na BST antes de exibir o menu.
+```bash
+./gradlew test
+```
+
+---
+
+# 🚀 Melhorias Futuras
+
+- AVL / Red-Black Tree
+- Benchmarks automáticos
+- Exportação de relatórios
+- Persistência em banco
+- Métricas de desempenho
+
+---
+
+# 👨‍💻 Contexto Acadêmico
+
+Projeto voltado ao estudo de:
+
+- Estruturas de dados
+- Complexidade algorítmica
+- Arquitetura MVC
+- Organização de software
+- Sistemas indexados

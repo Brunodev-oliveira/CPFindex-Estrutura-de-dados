@@ -1,0 +1,78 @@
+<svg viewBox="0 0 860 420" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="860" height="420" fill="#f8f9fa"/>
+  <text x="430" y="34" text-anchor="middle" fill="#1351B4" font-size="18" font-weight="bold">In-Order — Esquerda → Raiz → Direita</text>
+  <text x="430" y="56" text-anchor="middle" fill="#555" font-size="13">em uma BST, o resultado é sempre crescente — consequência da regra da árvore</text>
+
+  <!-- tree with numbered visit order -->
+  <g transform="translate(60,70)">
+    <!-- root 4 -->
+    <rect x="200" y="0" width="60" height="32" rx="6" fill="#1351B4"/>
+    <text x="230" y="20" text-anchor="middle" fill="white" font-size="16" font-weight="bold">4</text>
+    <circle cx="270" cy="6" r="12" fill="#F5A800"/>
+    <text x="270" y="11" text-anchor="middle" fill="white" font-size="10" font-weight="bold">④</text>
+
+    <!-- level 2 -->
+    <rect x="80" y="78" width="60" height="32" rx="6" fill="#1351B4" opacity="0.85"/>
+    <text x="110" y="98" text-anchor="middle" fill="white" font-size="16" font-weight="bold">2</text>
+    <circle cx="150" cy="84" r="12" fill="#F5A800"/>
+    <text x="150" y="89" text-anchor="middle" fill="white" font-size="10" font-weight="bold">②</text>
+
+    <rect x="320" y="78" width="60" height="32" rx="6" fill="#1351B4" opacity="0.85"/>
+    <text x="350" y="98" text-anchor="middle" fill="white" font-size="16" font-weight="bold">6</text>
+    <circle cx="390" cy="84" r="12" fill="#F5A800"/>
+    <text x="390" y="89" text-anchor="middle" fill="white" font-size="10" font-weight="bold">⑥</text>
+
+    <!-- level 3 -->
+    <rect x="20" y="156" width="56" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="48" y="176" text-anchor="middle" fill="#1351B4" font-size="16" font-weight="bold">1</text>
+    <circle cx="84" cy="162" r="12" fill="#F5A800"/>
+    <text x="84" y="167" text-anchor="middle" fill="white" font-size="10" font-weight="bold">①</text>
+
+    <rect x="140" y="156" width="56" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="168" y="176" text-anchor="middle" fill="#1351B4" font-size="16" font-weight="bold">3</text>
+    <circle cx="204" cy="162" r="12" fill="#F5A800"/>
+    <text x="204" y="167" text-anchor="middle" fill="white" font-size="10" font-weight="bold">③</text>
+
+    <rect x="264" y="156" width="56" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="292" y="176" text-anchor="middle" fill="#1351B4" font-size="16" font-weight="bold">5</text>
+    <circle cx="328" cy="162" r="12" fill="#F5A800"/>
+    <text x="328" y="167" text-anchor="middle" fill="white" font-size="10" font-weight="bold">⑤</text>
+
+    <rect x="384" y="156" width="56" height="32" rx="6" fill="#e8f0fe" stroke="#1351B4" stroke-width="1.5"/>
+    <text x="412" y="176" text-anchor="middle" fill="#1351B4" font-size="16" font-weight="bold">7</text>
+    <circle cx="448" cy="162" r="12" fill="#F5A800"/>
+    <text x="448" y="167" text-anchor="middle" fill="white" font-size="10" font-weight="bold">⑦</text>
+
+    <!-- lines -->
+    <line x1="230" y1="32" x2="110" y2="78" stroke="#1351B4" stroke-width="1.5"/>
+    <line x1="230" y1="32" x2="350" y2="78" stroke="#1351B4" stroke-width="1.5"/>
+    <line x1="110" y1="110" x2="48" y2="156" stroke="#1351B4" stroke-width="1.5"/>
+    <line x1="110" y1="110" x2="168" y2="156" stroke="#1351B4" stroke-width="1.5"/>
+    <line x1="350" y1="110" x2="292" y2="156" stroke="#1351B4" stroke-width="1.5"/>
+    <line x1="350" y1="110" x2="412" y2="156" stroke="#1351B4" stroke-width="1.5"/>
+
+    <!-- traversal curved path -->
+    <path d="M48,188 Q48,220 80,230 Q110,240 168,230 Q200,224 230,232 Q260,240 292,230 Q340,218 350,210 Q380,200 412,210 Q440,218 440,220" fill="none" stroke="#F5A800" stroke-width="2" stroke-dasharray="6,3"/>
+  </g>
+
+  <!-- result arrow -->
+  <line x1="560" y1="210" x2="620" y2="210" stroke="#1351B4" stroke-width="2.5"/>
+  <polygon points="620,210 608,203 608,217" fill="#1351B4"/>
+  <text x="588" y="204" text-anchor="middle" fill="#1351B4" font-size="11" font-weight="bold">inOrder()</text>
+
+  <!-- result list -->
+  <rect x="630" y="130" width="200" height="160" rx="12" fill="white" stroke="#1351B4" stroke-width="2"/>
+  <rect x="630" y="130" width="200" height="38" rx="12" fill="#1351B4"/>
+  <rect x="630" y="152" width="200" height="16" fill="#1351B4"/>
+  <text x="730" y="153" text-anchor="middle" fill="white" font-size="13" font-weight="bold">List&lt;Contribuinte&gt;</text>
+  <text x="730" y="186" text-anchor="middle" fill="#1351B4" font-size="15" font-weight="bold">1</text>
+  <text x="730" y="204" text-anchor="middle" fill="#1351B4" font-size="15" font-weight="bold">2</text>
+  <text x="730" y="222" text-anchor="middle" fill="#1351B4" font-size="15" font-weight="bold">3</text>
+  <text x="730" y="240" text-anchor="middle" fill="#1351B4" font-size="15" font-weight="bold">4</text>
+  <text x="730" y="258" text-anchor="middle" fill="#1351B4" font-size="15" font-weight="bold">5  6  7</text>
+
+  <!-- legend -->
+  <circle cx="660" cy="350" r="10" fill="#F5A800"/>
+  <text x="676" y="354" fill="#555" font-size="12">= ordem de visita</text>
+  <text x="430" y="390" text-anchor="middle" fill="#1351B4" font-size="12" font-weight="bold">resultado sempre ordenado crescente — sem custo adicional de ordenação</text>
+</svg>
