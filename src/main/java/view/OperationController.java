@@ -92,7 +92,7 @@ public class OperationController {
         );
         switch (resultado) {
             case "Contribuinte Cadastrado com sucesso"           -> { lblStatus.setText(" CPF cadastrado."); resetInput(); }
-            case "CPF duplicado"    -> lblStatus.setText("  CPF já cadastrado.");
+            case "CPF Duplicado"    -> lblStatus.setText("  CPF já cadastrado.");
             case "CPF Inválido" -> lblStatus.setText("  CPF inválido.");
         }
         refreshData();
